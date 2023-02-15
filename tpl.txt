@@ -5,7 +5,8 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-//why task parallel library? public class database
+//why task parallel library? 
+public class database
 {
      public static void fetchdata()
     {
@@ -24,7 +25,8 @@ public class customer
 {
     public static void Main()
     {         BLL.caller();
-        Console.WriteLine("when i will execute...");     }
+        Console.WriteLine("when i will execute...");    
+        }
 }    
 
 //tpl by using task
@@ -65,7 +67,8 @@ public class customer
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-//why task parallel library? public class database
+//why task parallel library? 
+public class database
 {
      public static void fetchdata()
     {
@@ -78,7 +81,8 @@ public class BLL
     public static void caller()
     {
         Task.Run(new Action(database.fetchdata)); //at this point new thread will be generated over seperate processor
-        //database.fetchdata();     }
+        //database.fetchdata();   
+        }
 }
 public class customer
 {
