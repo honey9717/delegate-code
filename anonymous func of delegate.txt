@@ -1,0 +1,28 @@
+annonymous code
+
+using System;
+delegate void mydelegate();
+
+    public class mycarrier
+    {
+       
+        public string music()
+        {
+          return  "no time for music";
+
+        }
+    }
+class candidate
+{
+    public static void Main()
+    {
+        mycarrier depa = new mycarrier();
+        mydelegate mylife = delegate ()
+        {
+            string mess = "dedicated for training";
+            Console.WriteLine(mess);
+        };
+        mylife.Invoke();
+
+    }
+}
