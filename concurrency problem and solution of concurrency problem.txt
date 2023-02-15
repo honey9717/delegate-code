@@ -1,0 +1,187 @@
+using System;
+using System.Threading;
+
+    public class office 
+    {
+        public void print()
+        {
+        for(int i=0; i<5; i++)
+        {
+            Thread.Sleep(100);
+            Console.WriteLine(i);
+
+        }
+        }
+
+    }
+public class developer
+{
+    public static void Main()
+    { 
+        office obj1= new office();
+        Thread[] t= new Thread[3];   // assuming that every developer is having seprate thread
+        for(int i=0;i<2;i++)
+        {
+            t[i] = new Thread(new ThreadStart(obj1.print));
+            t.Start();
+
+        }
+
+
+    }
+}
+
+in this concurrency problem occurs 
+as all the thread are using same function
+
+
+in order to solve this problem we made array of thread
+
+
+using System;
+using System.Threading;
+
+    public class office 
+    {
+        public void print()
+        {
+        lock (this)
+        {
+
+
+            for (int i = 0; i < 5; i++)
+            {
+                Thread.Sleep(100);
+                Console.WriteLine(i);
+
+            }
+        }
+        }
+
+    }
+public class developer
+{
+    public static void Main()
+    { 
+        office obj1= new office();
+        Thread[] t= new Thread[3];   // assuming that every developer is having seprate thread
+        for(int i=0;i<=2;i++)
+        {
+            t[i] = new Thread(new ThreadStart(obj1.print));
+            t[i].Start();
+
+        }
+
+
+    }
+}
+
+this is how we solve concurrency problem or deadlock situation 
+
+
+
+in order to solve this we use monitor class or semaphore or mutex or lock 
+
+
+--------------by using monitor----------------------
+
+
+using System;
+using System.Threading;
+
+    public class office 
+    {
+        public void print()
+       
+        {
+        Monitor.Enter(this);
+        try
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Thread.Sleep(100);
+                Console.WriteLine(i);
+
+            }
+
+        }
+        finally
+        {
+            Monitor.Exit(this);
+        }
+       
+        }
+
+    }
+public class developer
+{
+    public static void Main()
+    { 
+        office obj1= new office();
+        Thread[] t= new Thread[3];   // assuming that every developer is having seprate thread
+        for(int i=0;i<=2;i++)
+        {
+            t[i] = new Thread(new ThreadStart(obj1.print));
+            t[i].Start();
+
+        }
+
+
+    }
+}
+
+
+
+by using mutex---------------------------------
+
+
+
+using System;
+using System.Threading;
+
+public class office
+{
+    private static Mutex mutex= new Mutex();
+    public void print()
+
+    {
+        try
+        {
+            mutex.WaitOne();
+            for (int i = 0; i < 5; i++)
+            {
+                Thread.Sleep(100);
+                Console.WriteLine(i);
+
+            }
+
+        }
+        finally
+        {
+            mutex.ReleaseMutex();
+        }
+
+    }
+
+}
+public class developer
+{
+    public static void Main()
+    {
+        office obj1 = new office();
+        Thread[] t = new Thread[3];   // assuming that every developer is having seprate thread
+        for (int i = 0; i <= 2; i++)
+        {
+            t[i] = new Thread(new ThreadStart(obj1.print));
+            t[i].Start();
+
+        }
+
+
+    }
+}
+
+
+
+
+
