@@ -1,0 +1,46 @@
+multithread program 
+
+
+using System;
+using System.Threading;
+
+
+class threaddemo
+{
+    static void test1()
+    {
+        for(int i=0;i<20;i++) 
+        Console.WriteLine("test1:" + i);
+        
+    }
+    static void test2()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            Console.WriteLine("test2:" + i);
+            if (i == 50)
+                Thread.Sleep(5000);
+        }
+             
+
+
+    }
+    static void test3()
+    {
+        for (int i = 0; i < 20; i++)
+            Console.WriteLine("test3:" + i);
+
+    }
+    static void Main()
+    {
+        test1();
+        test2();
+        test3();
+
+    }
+
+}
+ in this the drawback is that function to will sleep for 5 sec and in the mean time function 3 has to wait for the complete execution of the function2 for its execution to start .....
+
+
+
