@@ -1,0 +1,27 @@
+delegate program
+
+using System;
+delegate void mydelegate();
+
+    public class mycarrier
+    {
+        public  void training()
+        {
+           Console.WriteLine("damm dedicated for training");
+        }
+        public string music()
+        {
+          return  "no time for music";
+
+        }
+    }
+class candidate
+{
+    public static void Main()
+    {
+        mycarrier depa = new mycarrier();
+        mydelegate mylife = new mydelegate(depa.training);
+        mylife.Invoke();
+
+    }
+}
