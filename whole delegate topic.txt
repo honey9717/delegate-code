@@ -1,0 +1,258 @@
+delegate program
+
+using System;
+delegate void mydelegate();
+
+    public class mycarrier
+    {
+        public  void training()
+        {
+           Console.WriteLine("damm dedicated for training");
+        }
+        public string music()
+        {
+          return  "no time for music";
+
+        }
+    }
+class candidate
+{
+    public static void Main()
+    {
+        mycarrier depa = new mycarrier();
+        mydelegate mylife = new mydelegate(depa.training);
+        mylife.Invoke();
+
+    }
+}
+
+annonymous code
+
+using System;
+delegate void mydelegate();
+
+    public class mycarrier
+    {
+       
+        public string music()
+        {
+          return  "no time for music";
+
+        }
+    }
+class candidate
+{
+    public static void Main()
+    {
+        mycarrier depa = new mycarrier();
+        mydelegate mylife = delegate ()
+        {
+            string mess = "dedicated for training";
+            Console.WriteLine(mess);
+        };
+        mylife.Invoke();
+
+    }
+}
+
+by using lamda
+
+using System;
+delegate void mydelegate();
+
+    public class mycarrier
+    {
+       
+        public string music()
+        {
+          return  "no time for music";
+
+        }
+    }
+class candidate
+{
+    public static void Main()
+    {
+        mycarrier depa = new mycarrier();
+        mydelegate mylife =  ()=>
+        {
+            string mess = "dedicated for training";
+            Console.WriteLine(mess);
+        };
+        mylife.Invoke();
+
+    }
+}
+
+
+delegate code with parameter 
+
+
+using System;
+delegate void mydelegate(string i);
+
+    public class mycarrier
+
+    {
+    public void training(string temp)
+    {
+        
+            string mess = temp;
+            Console.WriteLine(mess);
+        
+    }
+       
+        public string music()
+        {
+          return  "no time for music";
+
+        }
+    }
+class candidate
+{
+    public static void Main()
+    {
+        mycarrier depa = new mycarrier();
+        mydelegate mylife = new mydelegate(depa.training);
+        mylife.Invoke(" dedicate for training....");
+
+    }
+}
+
+annonymous method with parameter
+
+using System;
+delegate void mydelegate(string i);
+
+    public class mycarrier
+
+    {
+    
+       
+        public string music()
+        {
+          return  "no time for music";
+
+        }
+    }
+class candidate
+{
+    public static void Main()
+    {
+        mycarrier depa = new mycarrier();
+        mydelegate mylife = delegate (string i)
+        {
+            string mess = i;
+            Console.WriteLine(mess);
+
+        };
+        mylife.Invoke(" dedicate for training....");
+
+    }
+
+
+
+lamda with parameter
+
+using System;
+delegate void mydelegate(string i);
+
+    public class mycarrier
+
+    {
+    
+       
+        public string music()
+        {
+          return  "no time for music";
+
+        }
+    }
+class candidate
+{
+    public static void Main()
+    {
+        mycarrier depa = new mycarrier();
+        mydelegate mylife =  (string i)=>
+        {
+            string mess = i;
+            Console.WriteLine(mess);
+
+        };
+        mylife.Invoke(" dedicate for training>>>>>>>>>..");
+
+    }
+}
+
+
+func code 
+
+using System;
+
+class Program
+{
+
+
+    public static string GetMessage(string name)
+    {
+        return "My name is " + name;
+    }
+
+    public static void Main(string[] args)
+    {
+        Func<string,string> temp= GetMessage;
+        Console.WriteLine(temp("Pragya"));
+    }
+
+    
+}
+
+action code 
+
+using System;
+
+class Program
+{
+
+
+    public static void GetMessage(int name)
+    {
+        Console.WriteLine( " pragya"  + name);
+    }
+
+    public static void Main(string[] args)
+    {
+        Action<int> temp = GetMessage;
+        temp(5);
+    }
+
+
+}
+
+
+predicate code 
+
+using System;
+
+class Program
+{
+
+
+    static bool IsUpperCase(string str)
+    {
+        return str.Equals(str.ToUpper());
+    }
+
+    public static void Main(string[] args)
+    {
+      Predicate <string > isUpper = IsUpperCase;
+
+        bool result = isUpper("PRAGYA!!");
+
+        Console.WriteLine(result);
+    }
+
+
+}
+
+
